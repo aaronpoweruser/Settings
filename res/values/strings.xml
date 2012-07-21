@@ -4114,12 +4114,31 @@
     <string name="advanced_settings_title">Advanced</string>
     <string name="about_cna_settings_title">About CN(A)</string>
 
+<<<<<<< HEAD
     <!-- Interface | Titles -->
     <string name="general_ui_settings_title">@string/sound_category_sound_title</string>
     <string name="power_menu_title">Power menu</string>
     <string name="status_bar_title">Status bar</string>
     <string name="notification_drawer_title">Notification power widget</string>
     <string name="notification_drawer_toggles_title">Notification toggles</string>
+=======
+    <!-- System Interface settings  -->
+    <string name="system_settings_title">System</string>
+    <string name="system_interface_title">System interface</string>
+    
+    <!-- ParanoidAndroid settings intent -->
+    <string name="paranoid_settings">Paranoid Settings</string>
+
+    <!-- Notification Drawer  -->
+    <string name="notification_drawer_title">Notification drawer</string>
+
+    <!-- Combined Bar  -->
+    <string name="combined_bar_title">Combined bar</string>
+    <string name="combined_bar_auto_hide_title">Auto hide</string>
+    <string name="combined_bar_auto_hide_summary">Allow combined bar to hide when showing a fullscreen app</string>
+
+    <!-- Navigation Bar  -->
+>>>>>>> be3fbdf... Add intent for launching paranoid settings
     <string name="navigation_bar_title">Navigation bar</string>
     <string name="interface_navring_settings">Navigation bar ring</string>
     <string name="hardware_keys_title">Hardware keys</string>
