@@ -78,6 +78,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
 
+    private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
+    private static final String NAV_BAR_CATEGORY = "nav_bar_category";
+
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
     public static final int REQUEST_PICK_LANDSCAPE_ICON = 201;
     private static final int DIALOG_NAVBAR_HEIGHT_REBOOT = 204;
@@ -98,6 +101,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     SeekBarPreference mButtonAlpha;
     ColorPreference mNavBar;
     Preference mStockColor;
+
+    CheckBoxPreference mMenuButtonShow;
+    PreferenceCategory mPrefCategory;
 
     private int mPendingIconIndex = -1;
     private int mPendingWidgetDrawer = -1;
@@ -129,6 +135,16 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         menuDisplayLocation.setValue(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.MENU_LOCATION,
                 0) + "");
+        mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
+        mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
+
+        mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
+
+        if (!Utils.isTablet()) {
+            mPrefCategory.removePreference(mMenuButtonShow);
+        }
+
 
         mNavBarMenuDisplay = (ListPreference) findPreference(PREF_NAVBAR_MENU_DISPLAY);
         mNavBarMenuDisplay.setOnPreferenceChangeListener(this);
@@ -367,6 +383,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         if (pref.equals(mStockColor)) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEMUI_NAVBAR_COLOR, -1);
+        } else if (preference == mMenuButtonShow) {
+            value = mMenuButtonShow.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAV_BAR_TABUI_MENU, value ? 1 : 0);
+            return true;
         }
         return false;
     }

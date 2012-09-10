@@ -4121,9 +4121,16 @@
     <string name="notification_drawer_title">Notification power widget</string>
     <string name="notification_drawer_toggles_title">Notification toggles</string>
     <string name="navigation_bar_title">Navigation bar</string>
+
     <string name="interface_navring_settings">Navigation bar ring</string>
     <string name="hardware_keys_title">Hardware keys</string>
     <string name="lock_screen_title">Lock screen</string>
+
+    <string name="navigation_bar_status_title">Software buttons</string>
+    <string name="navigation_bar_status_summary">Show on screen software buttons</string>
+    <string name="navigation_bar_tabui_menu_title">Split menu button</string>
+    <string name="navigation_bar_tabui_menu_summary">Show separate menu button instead of merging it to recents button</string>
+
 
     <!-- Interface | General UI -->
     <string name="misc">Misc</string>
