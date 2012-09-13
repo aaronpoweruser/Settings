@@ -67,6 +67,16 @@
         android:fragment="com.android.settings.cnd.InterfaceSettings"
         android:title="@string/interface_settings_title" />
 
+     <!-- ParanoidAndroid Header -->
+    <header
+        android:id="@+id/paranoid_settings"
+        android:icon="@drawable/ic_settings_paranoid">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
+    </header>
+
     <!-- Performance -->
     <header
         android:id="@+id/performance_settings"
@@ -101,27 +111,9 @@
 
     <!-- Launcher -->
     <header
-<<<<<<< HEAD
         android:id="@+id/launcher_settings"	
         android:title="@string/launcher_settings_title"
         android:icon="@drawable/ic_launcher_cna" />
-=======
-        android:id="@+id/system_settings"
-        android:icon="@drawable/ic_settings_system"
-        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
-        android:title="@string/system_settings_title" />
-        
-     <!-- ParanoidAndroid Header -->
-    <header
-        android:id="@+id/paranoid_settings"
-        android:icon="@drawable/ic_paranoid_settings"
-        android:title="@string/paranoid_settings">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.paranoid.preferences"
-            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
-    </header>
->>>>>>> be3fbdf... Add intent for launching paranoid settings
 
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />
@@ -261,12 +253,12 @@
         android:icon="@drawable/ic_settings_development"
         android:title="@string/development_settings_title" />
 
-    <!-- About CN(A) -->
+    <!-- About CN(A) 
     <header
         android:id="@+id/about_rom"
         android:fragment="com.android.settings.cnd.About"
         android:icon="@drawable/ic_settings_about_cna"
-        android:title="@string/about_cna_settings_title" />
+        android:title="@string/about_cna_settings_title" /> -->
 
     <!-- About Device -->
     <header
