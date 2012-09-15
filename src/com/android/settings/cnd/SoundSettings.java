@@ -72,7 +72,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private ListPreference mUserDownMS;
     private ListPreference mFlipScreenOff;
     private ListPreference mPhoneSilent;
-
+    private ListPreference mAnnoyingNotifications;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +89,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 VolumePanel.VOLUME_OVERLAY_SINGLE);
         mVolumeOverlay.setValue(Integer.toString(volumeOverlay));
         mVolumeOverlay.setSummary(mVolumeOverlay.getEntry());
+
+        mAnnoyingNotifications = (ListPreference) findPreference(PREF_LESS_NOTIFICATION_SOUNDS);
+        mAnnoyingNotifications.setOnPreferenceChangeListener(this);
+        mAnnoyingNotifications.setValue(Integer.toString(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD,
+                0)));
 
         mSafeHeadsetRestore = (CheckBoxPreference) findPreference(KEY_SAFE_HEADSET_RESTORE);
         mSafeHeadsetRestore.setPersistent(false);
@@ -212,7 +218,13 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 toggleFlipService();
             }
             return true;
+        } else if (preference == mAnnoyingNotifications) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
+            return true;
         }
+
         return false;
     }
 }
