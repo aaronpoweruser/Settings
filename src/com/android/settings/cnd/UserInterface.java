@@ -106,12 +106,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
         mAlarm = (CheckBoxPreference) findPreference(PREF_ALARM_ENABLE);
         mAlarm.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_SHOW_ALARM, 1) == 1);
-
-        boolean hasNavBarByDefault = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_showNavigationBar);
-
-        if (hasNavBarByDefault || mTablet) {
-            ((PreferenceGroup) findPreference("misc")).removePreference(mKillAppLongpressBack);
+ 
         }
     }
 
