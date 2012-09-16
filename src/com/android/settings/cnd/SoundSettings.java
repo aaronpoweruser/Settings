@@ -58,6 +58,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String PREF_USER_TIMEOUT = "user_timeout";
     private static final String PREF_USER_DOWN_MS = "user_down_ms";
     private static final String PREF_PHONE_RING_SILENCE = "phone_ring_silence";
+    private static final String PREF_LESS_NOTIFICATION_SOUNDS = "less_notification_sounds";
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -219,7 +220,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             }
             return true;
         } else if (preference == mAnnoyingNotifications) {
-            int val = Integer.parseInt((String) newValue);
+            int val = Integer.parseInt((String) objValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                 Settings.System.MUTE_ANNOYING_NOTIFICATIONS_THRESHOLD, val);
             return true;

@@ -25,6 +25,13 @@
         android:entries="@array/volume_overlay_entries"
         android:entryValues="@array/volume_overlay_values" />
 
+ <ListPreference
+        android:key="less_notification_sounds"
+        android:title="@string/less_notification_sounds_title"
+        android:summary="@string/less_notification_sounds_summary"
+        android:entries="@array/less_notification_sounds_entries"
+        android:entryValues="@array/less_notification_sounds_values" />
+
     <com.android.settings.IncreasingRingPreference
         android:key="increasing_ring"
         android:title="@string/increasing_ring_title"

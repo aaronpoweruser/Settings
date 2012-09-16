@@ -108,7 +108,6 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
                     Settings.System.STATUSBAR_SHOW_ALARM, 1) == 1);
  
         }
-    }
 
     private void writeKillAppLongpressBackOptions() {
         Settings.System.putInt(getActivity().getContentResolver(),
