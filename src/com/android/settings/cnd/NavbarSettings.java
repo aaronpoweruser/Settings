@@ -36,6 +36,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
@@ -59,6 +60,7 @@ import com.android.settings.cnd.ColorPreference;
 import com.android.settings.cnd.NavRingTargets;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.util.Helpers;
 import com.android.settings.util.ShortcutPickerHelper;
 import com.android.settings.widgets.NavBarItemPreference;
@@ -87,6 +89,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final int DIALOG_NAVBAR_HEIGHT_REBOOT = 204;
 
     public static final String PREFS_NAV_BAR = "navbar";
+    private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
+    private static final String NAV_BAR_CATEGORY = "nav_bar_category";
 
     Preference mNavRingTargets;
 
@@ -105,6 +109,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     SeekBarPreference mButtonAlpha;
     ColorPreference mNavBar;
     Preference mStockColor;
+    private CheckBoxPreference mMenuButtonShow;
+    private PreferenceCategory mPrefCategory;
 
     private int mPendingIconIndex = -1;
     private int mPendingWidgetDrawer = -1;
@@ -155,6 +161,14 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavBarButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NAVIGATION_BAR_BUTTONS_QTY, 3) + "");
 
+        mMenuButtonShow = (CheckBoxPreference) prefs.findPreference(NAV_BAR_TABUI_MENU);
+      //  mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
+mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
+
+        if (!Utils.isTablet()) {
+   //        mPrefCategory.removePreference(mMenuButtonShow);
+        }
+
         mPicker = new ShortcutPickerHelper(this, this);
 
         boolean hasNavBarByDefault = getActivity().getApplicationContext().getResources().getBoolean(
@@ -179,10 +193,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mGlowTimes.setOnPreferenceChangeListener(this);
 
         // don't allow devices that must use a navigation bar to disable it
-        if (hasNavBarByDefault || mTablet) {
-            prefs.removePreference(mEnableNavigationBar);
-        }
-
+        
+        prefs.removePreference(mEnableNavigationBar);
         mNavigationBarHeight = (ListPreference) findPreference("navigation_bar_height");
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
 
@@ -199,9 +211,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mStockColor = (Preference) findPreference("interface_navbar_color_default");
         mStockColor.setOnPreferenceClickListener(this);
 
-        if (mTablet) {
-            prefs.removePreference(mNavBarMenuDisplay);
-        }
+       
+     //  if (Utils.isTablet(getActivity())) {
+         
+      //      prefs.removePreference(mNavBarButtonQty);
+      //      prefs.removePreference(mNavBarMenuDisplay);
+     //       prefs.removePreference(menuDisplayLocation); 
+     //   } 
         refreshSettings();
         setHasOptionsMenu(true);
         updateGlowTimesSummary();
@@ -381,6 +397,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                     val / 100);
+            return true;
+        }  else if (preference == mMenuButtonShow) {
+         boolean   value = mMenuButtonShow.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAV_BAR_TABUI_MENU, value ? 1 : 0);	
             return true;
         }
 
