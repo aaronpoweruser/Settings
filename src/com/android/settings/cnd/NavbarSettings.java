@@ -161,7 +161,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavBarButtonQty.setValue(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.NAVIGATION_BAR_BUTTONS_QTY, 3) + "");
 
-        mMenuButtonShow = (CheckBoxPreference) prefs.findPreference(NAV_BAR_TABUI_MENU);
+      //  mMenuButtonShow = (CheckBoxPreference) prefs.findPreference(NAV_BAR_TABUI_MENU);
       //  mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
 mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
 
@@ -398,12 +398,12 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
                     Settings.System.NAVIGATION_BAR_BUTTON_ALPHA,
                     val / 100);
             return true;
-        }  else if (preference == mMenuButtonShow) {
+        } /* else if (preference == mMenuButtonShow) {
          boolean   value = mMenuButtonShow.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TABUI_MENU, value ? 1 : 0);	
             return true;
-        }
+        } */
 
         return false;
     }
