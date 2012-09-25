@@ -90,9 +90,6 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
             }
         }
 
-        mRecentKillAll = (CheckBoxPreference) findPreference(PREF_RECENT_KILL_ALL);
-        mRecentKillAll.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.RECENT_KILL_ALL_BUTTON, 0) == 1);
 
         mVolumeKeyCursorControl = (ListPreference) findPreference(VOLUME_KEY_CURSOR_CONTROL);
         mVolumeKeyCursorControl.setOnPreferenceChangeListener(this);
@@ -117,6 +114,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
     private void updateKillAppLongpressBackOptions() {
         mKillAppLongpressBack.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.KILL_APP_LONGPRESS_BACK, 0) != 0);
+
     }
 
     private void updateCustomLabelTextSummary() {
@@ -136,6 +134,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_IME_SWITCHER, mStatusBarImeSwitcher.isChecked() ? 1 : 0);
             return true;
+
         } else if (preference == mRecentKillAll) {
             boolean checked = ((CheckBoxPreference) preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
