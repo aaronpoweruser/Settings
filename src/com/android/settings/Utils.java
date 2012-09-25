@@ -1,4 +1,4 @@
-/**
+    /**
  * Copyright (C) 2007 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
@@ -43,7 +43,6 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TabWidget;
-import android.util.ExtendedPropertiesUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -497,7 +496,7 @@ public class Utils {
         return true;
     }
 
-       private static int getScreenType(Context con) {
+    private static int getScreenType(Context con) {
         if (mDeviceType == -1) {
             WindowManager wm = (WindowManager)con.getSystemService(Context.WINDOW_SERVICE);
             android.view.Display display = wm.getDefaultDisplay();
@@ -518,15 +517,15 @@ public class Utils {
     }
 
     public static boolean isPhone(Context con) {
-        return isTablet();
+        return getScreenType(con) == DEVICE_PHONE;
     }
 
     public static boolean isHybrid(Context con) {
-        return isTablet();
+        return getScreenType(con) == DEVICE_HYBRID;
     }
 
     public static boolean isTablet(Context con) {
-         return getScreenType(con) == DEVICE_HYBRID;
+        return getScreenType(con) == DEVICE_TABLET;
     }
 
     public static boolean isTablet() {
