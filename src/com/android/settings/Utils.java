@@ -43,6 +43,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TabWidget;
+import android.util.ExtendedPropertiesUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
