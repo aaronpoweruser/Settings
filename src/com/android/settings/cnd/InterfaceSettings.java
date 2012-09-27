@@ -61,7 +61,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         mTabletDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER_TABLET);
         mHardwareKeys = (PreferenceScreen) findPreference(KEY_HARDWARE_KEYS);
 
-        if (Utils.isTablet(getActivity())) {
+        if (Utils.isTablet() {
             if (mPhoneDrawer != null) {
                 getPreferenceScreen().removePreference(mPhoneDrawer);
                 getPreferenceScreen().removePreference(mPhoneToggles);

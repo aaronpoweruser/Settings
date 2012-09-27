@@ -165,10 +165,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
       //  mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
 mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
 
-        if (!Utils.isTablet()) {
-   //        mPrefCategory.removePreference(mMenuButtonShow);
-        }
-
+     
         mPicker = new ShortcutPickerHelper(this, this);
 
         boolean hasNavBarByDefault = getActivity().getApplicationContext().getResources().getBoolean(
@@ -212,12 +209,12 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
         mStockColor.setOnPreferenceClickListener(this);
 
        
-     //  if (Utils.isTablet(getActivity())) {
-         
-      //      prefs.removePreference(mNavBarButtonQty);
-      //      prefs.removePreference(mNavBarMenuDisplay);
-     //       prefs.removePreference(menuDisplayLocation); 
-     //   } 
+       if (Utils.isTablet() {
+           mPrefCategory.removePreference(mMenuButtonShow);
+           mPrefCategory.removePreference(mNavBarButtonQty);
+           mPrefCategory.removePreference(mNavBarMenuDisplay);
+           mPrefCategory.removePreference(menuDisplayLocation); 
+        } 
         refreshSettings();
         setHasOptionsMenu(true);
         updateGlowTimesSummary();
