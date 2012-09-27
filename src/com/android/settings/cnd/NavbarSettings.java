@@ -209,11 +209,9 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
         mStockColor.setOnPreferenceClickListener(this);
 
        
-       if (Utils.isTablet() {
-           mPrefCategory.removePreference(mMenuButtonShow);
-           mPrefCategory.removePreference(mNavBarButtonQty);
-           mPrefCategory.removePreference(mNavBarMenuDisplay);
-           mPrefCategory.removePreference(menuDisplayLocation); 
+       if (Utils.isTablet()) {
+           prefs.removePreference(menuDisplayLocation);
+           prefs.removePreference(mNavBarMenuDisplay);
         } 
         refreshSettings();
         setHasOptionsMenu(true);

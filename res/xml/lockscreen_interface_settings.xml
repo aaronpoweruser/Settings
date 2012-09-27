@@ -65,6 +65,11 @@
             android:entries="@array/lockscreen_battery_status_entries"
             android:entryValues="@array/lockscreen_battery_status_values"/>
 
+        <CheckBoxPreference	
+            android:key="lockscreen_stock_music_layout"
+            android:title="@string/lockscreen_stock_music_layout_title"
+            android:summary="@string/lockscreen_stock_music_layout_summary" />
+
         <Preference
             android:fragment="com.android.settings.cnd.Weather"
             android:key="lockscreen_weather"

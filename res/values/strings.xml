@@ -5006,6 +5006,9 @@
     <string name="use_custom_app_title">Use custom application</string>
     <string name="use_custom_app_summary">Use custom application instead of the recent applications dialog</string>
     <string name="group_applications">Applications</string>
+
+    <string name="lockscreen_stock_music_layout_title">Stock music layout</string>	
+    <string name="lockscreen_stock_music_layout_summary">Use the stock layout when playing music.</string>
     
     <!-- **** EXTRA ADDITIONS END **** -->
 </resources>

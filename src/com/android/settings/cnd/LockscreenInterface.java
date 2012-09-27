@@ -60,6 +60,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String PREF_LOCKSCREEN_TEXT_COLOR = "lockscreen_text_color";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
     private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
+    private static final String PREF_STOCK_MUSIC_LAYOUT = "lockscreen_stock_music_layout";
 
     private ListPreference mCustomBackground;
     private ListPreference mWidgetsAlignment;
@@ -68,6 +69,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ColorPickerPreference mLockscreenTextColor;
     private ListPreference mBatteryStatus;
     private ListPreference mClockAlign;
+    private CheckBoxPreference mStockMusicLayout;
     private Activity mActivity;
     ContentResolver mResolver;
 
@@ -89,6 +91,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mCustomBackground.setOnPreferenceChangeListener(this);
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
         wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
+
+         mStockMusicLayout = (CheckBoxPreference) findPreference(PREF_STOCK_MUSIC_LAYOUT);	
+        mStockMusicLayout.setChecked(Settings.System.getInt(getActivity().getApplicationContext()	
+                .getContentResolver(),	
+                Settings.System.LOCKSCREEN_STOCK_MUSIC_LAYOUT, 0) == 1);
 
         mWidgetsAlignment = (ListPreference) findPreference(KEY_WIDGETS_PREF);
         mWidgetsAlignment.setOnPreferenceChangeListener(this);
@@ -324,7 +331,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     Settings.System.LOCKSCREEN_CLOCK_ALIGN, value);
             mClockAlign.setSummary(mClockAlign.getEntries()[value]);
             return true;
+        } else if (preference == mStockMusicLayout) {
+          boolean value = mStockMusicLayout.isChecked();	
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                   Settings.System.LOCKSCREEN_STOCK_MUSIC_LAYOUT, value ? 1 : 0);
         }
+
         return false;
     }
 }
