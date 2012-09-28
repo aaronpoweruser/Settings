@@ -212,6 +212,7 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
        if (Utils.isTablet()) {
            prefs.removePreference(menuDisplayLocation);
            prefs.removePreference(mNavBarMenuDisplay);
+        //   prefs.removePreference(mNavBarButtonQty);
         } 
         refreshSettings();
         setHasOptionsMenu(true);
