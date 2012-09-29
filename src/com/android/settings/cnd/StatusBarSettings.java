@@ -212,9 +212,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
-
- 
-        }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
