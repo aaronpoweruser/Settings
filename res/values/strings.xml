@@ -4471,7 +4471,8 @@
     <string name="slide_lock_delay_10m">10 minutes</string>
     <string name="slide_lock_delay_30m">30 minutes</string>
     <string name="lockpattern_settings_enable_lock_before_unlock">Show widgets before unlock</string>
-    <string name="additional_options_title">Additional options</string>
+    <string name="lockpattern_settings_enable_sync_enc_pass">Sync encryption password</string>
+    <string name="additional_options_title">Additional</string>
     <string name="unlock_menu_unlock_title">Menu unlock</string>
     <string name="unlock_menu_unlock_summary">Pressing the menu button unlocks the device</string>
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
@@ -4536,8 +4537,6 @@
     <string name="increasing_ring_interval_3seconds">3 seconds</string>
     <string name="increasing_ring_interval_5seconds">5 seconds</string>
     <string name="increasing_ring_interval_10seconds">10 seconds</string>
-    <string name="safe_headset_restore_title">Safe headset volume</string>
-    <string name="safe_headset_restore_summary">Prevent loud volume levels when headset is first plugged in</string>
     <string name="volbtn_music_controls_title">Volume rocker music controls</string>
     <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
     <string name="volume_adjust_sounds_enable_title">Volume adjust sound</string>
