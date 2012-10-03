@@ -92,18 +92,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
         addPreferencesFromResource(R.xml.user_interface_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
-
-
-        mLcdDensity = findPreference("lcd_density_setup");
-        String currentProperty = SystemProperties.get("ro.sf.lcd_density");
-        try {
-            newDensityValue = Integer.parseInt(currentProperty);
-        } catch (Exception e) {
-            getPreferenceScreen().removePreference(mLcdDensity);
-        }
-
-        mLcdDensity.setSummary(getResources().getString(R.string.current_lcd_density) + currentProperty);
-
+        getPreferenceScreen().removePreference(mLcdDensity);
         customnavTemp = new File(getActivity().getFilesDir()+"notification_wallpaper.jpg");
 
 
@@ -136,22 +125,15 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
                     Settings.System.STATUSBAR_SHOW_ALARM, 1) == 1);
 
 
-        mTabletui = (CheckBoxPreference) findPreference(PREF_MODE_TABLET_UI);
-        mTabletui.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
-                    Settings.System.MODE_TABLET_UI, false));
-
         mNotificationWallpaper = findPreference(PREF_NOTIFICATION_WALLPAPER);
 
         mWallpaperAlpha = (Preference) findPreference(PREF_NOTIFICATION_WALLPAPER_ALPHA);
 
-        boolean hasNavBarByDefault = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_showNavigationBar);
-
-        if (hasNavBarByDefault || mTablet) {
+        if (Utils.isTablet() {
             ((PreferenceGroup) findPreference("misc")).removePreference(mKillAppLongpressBack);
         }
 
-        if (mTablet) {
+        if (Utils.isTablet() {
             prefs.removePreference(mNotificationWallpaper);
             prefs.removePreference(mWallpaperAlpha);
         } else {

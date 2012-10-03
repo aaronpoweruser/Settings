@@ -57,8 +57,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.android.settings.cnd.ColorPreference;
 import com.android.settings.cnd.NavRingTargets;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -84,6 +82,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
     private static final String NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String NAVIGATION_BAR_WIDTH = "navigation_bar_width";
+    private static final String PREF_NAV_BAR_COLOR = "interface_navbar_color";
+    private static final String PREF_NAV_BAR_COLOR_DEF = "interface_navbar_color_default";
     private static final String PREF_NAVRING_AMOUNT = "pref_navring_amount";
 
     public static final int REQUEST_PICK_CUSTOM_ICON = 200;
@@ -109,7 +109,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     ListPreference mNavigationBarHeightLandscape;
     ListPreference mNavigationBarWidth;
     SeekBarPreference mButtonAlpha;
-    ColorPreference mNavBar;
+    ColorPickerPreference mNavBar;
     Preference mStockColor;
     private CheckBoxPreference mMenuButtonShow;
     private PreferenceCategory mPrefCategory;
@@ -209,11 +209,10 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
         mNavigationBarWidth = (ListPreference) findPreference("navigation_bar_width");
         mNavigationBarWidth.setOnPreferenceChangeListener(this);
 
-        mNavBar = (ColorPreference) findPreference("interface_navbar_color");
-        mNavBar.setProviderTarget(Settings.System.SYSTEMUI_NAVBAR_COLOR,
-                                  Settings.System.SYSTEMUI_NAVBAR_COLOR_DEF);
+        mNavBar = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
+        mNavBar.setOnPreferenceChangeListener(this);
         
-        mStockColor = (Preference) findPreference("interface_navbar_color_default");
+        mStockColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
         mStockColor.setOnPreferenceClickListener(this);
 
        
@@ -374,6 +373,18 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
+        } else if (preference == mNavigationBarTransparency) {
+            int navBarTrans = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext()
+                    .getContentResolver(), Settings.System.NAV_BAR_TRANSPARENCY, navBarTrans);
+        } else if (preference == mNavBar) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.SYSTEMUI_NAVBAR_COLOR, intHex);
+            return true;
         } else if (preference == mNavigationBarGlowColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
@@ -430,7 +441,7 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
         // TODO Auto-generated method stub
         if (pref.equals(mStockColor)) {
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVBAR_COLOR, -1);
+                    Settings.System.SYSTEMUI_NAVBAR_COLOR, Settings.System.SYSTEMUI_NAVBAR_COLOR_DEF);
         }
         return false;
     }

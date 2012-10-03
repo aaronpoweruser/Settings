@@ -213,19 +213,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
 
-        } else if (preference == mHideSignal) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_HIDE_SIGNAL_BARS,
-                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
-            return true;
-
-
-        } else if (preference == mAltSignal) {
-            Settings.System.putBoolean(getContentResolver(),
-                    Settings.System.STATUSBAR_SIGNAL_CLUSTER_ALT,mAltSignal.isChecked());
-            return true;
-
-
+ 
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
