@@ -1766,6 +1766,7 @@
     
     <string-array name="navigation_bar_width_entries">
         <item>42 dp (default)</item>
+        <item>40 dp</item>
         <item>38 dp</item>
         <item>36 dp</item>
         <item>30 dp</item>
@@ -1774,6 +1775,7 @@
     
     <string-array name="navigation_bar_width" translatable="false">
         <item>42</item>
+        <item>40</item>
         <item>38</item>
         <item>36</item>
         <item>30</item>
@@ -1783,6 +1785,7 @@
     <string-array name="navigation_bar_height_entries">
         <item>48 dp (default)</item>
         <item>44 dp</item>
+        <item>42 dp</item> 
         <item>40 dp</item>
         <item>38 dp</item>
         <item>36 dp</item>
@@ -1793,6 +1796,7 @@
     <string-array name="navigation_bar_height" translatable="false">
         <item>48</item>
         <item>44</item>
+        <item>42</item> 
         <item>40</item>
         <item>38</item>
         <item>36</item>
@@ -1802,7 +1806,9 @@
     
     <string-array name="navigation_bar_height_landscape_entries">
         <item>48 dp (default)</item>
+        <item>44 dp</item>
         <item>42 dp</item>
+        <item>40 dp</item>
         <item>38 dp</item>
         <item>36 dp</item>
         <item>30 dp</item>
@@ -1811,7 +1817,9 @@
     
     <string-array name="navigation_bar_height_landscape" translatable="false">
         <item>48</item>
+        <item>44</item>
         <item>42</item>
+        <item>40</item>
         <item>38</item>
         <item>36</item>
         <item>30</item>
