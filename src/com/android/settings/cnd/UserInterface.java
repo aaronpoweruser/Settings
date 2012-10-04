@@ -46,6 +46,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.util.CMDProcessor;
 import com.android.settings.util.Helpers;
 
@@ -92,7 +93,6 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
         addPreferencesFromResource(R.xml.user_interface_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
-        getPreferenceScreen().removePreference(mLcdDensity);
         customnavTemp = new File(getActivity().getFilesDir()+"notification_wallpaper.jpg");
 
 
@@ -129,15 +129,13 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
 
         mWallpaperAlpha = (Preference) findPreference(PREF_NOTIFICATION_WALLPAPER_ALPHA);
 
-        if (Utils.isTablet() {
+        if (Utils.isTablet()) {
             ((PreferenceGroup) findPreference("misc")).removePreference(mKillAppLongpressBack);
         }
 
-        if (Utils.isTablet() {
+        if (Utils.isTablet()) {
             prefs.removePreference(mNotificationWallpaper);
             prefs.removePreference(mWallpaperAlpha);
-        } else {
-            prefs.removePreference(mTabletui);
         }
         
         setHasOptionsMenu(true);
@@ -185,12 +183,6 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
             boolean checked = ((CheckBoxPreference) preference).isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_SHOW_ALARM, checked ? 1 : 0);
-
-        } else if (preference == mTabletui) {
-            Settings.System.putBoolean(mContext.getContentResolver(),
-                    Settings.System.MODE_TABLET_UI,
-                    ((CheckBoxPreference) preference).isChecked());
-            return true;
         } else if (preference == mNotificationWallpaper) {
             Display display = getActivity().getWindowManager().getDefaultDisplay();
             int width = display.getWidth();

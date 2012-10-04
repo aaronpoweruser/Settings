@@ -373,10 +373,6 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVIGATION_BAR_TINT, intHex);
             return true;
-        } else if (preference == mNavigationBarTransparency) {
-            int navBarTrans = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext()
-                    .getContentResolver(), Settings.System.NAV_BAR_TRANSPARENCY, navBarTrans);
         } else if (preference == mNavBar) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
