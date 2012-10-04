@@ -64,7 +64,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         if (Utils.isTablet()) {
             if (mPhoneDrawer != null) {
                 getPreferenceScreen().removePreference(mPhoneDrawer);
-             //   getPreferenceScreen().removePreference(mPhoneToggles);
+                getPreferenceScreen().removePreference(mPhoneToggles);
                 getPreferenceScreen().removePreference(mHardwareKeys);
             }
         } else {

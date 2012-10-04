@@ -2119,7 +2119,7 @@
         <item>2m</item>
     </string-array>
 
-<<<<<<< HEAD
+
     <string-array name="less_notification_sounds_values" translatable="false">
         <item>0</item>
         <item>3000</item>
@@ -2131,7 +2131,7 @@
         <item>60000</item>
         <item>120000</item>
     </string-array>
-=======
+
     <string-array name="entries_status_bar_transparency">
         <item>0%</item>
         <item>25%</item>
@@ -2149,6 +2149,6 @@
     </string-array>
 
     <!-- **** EXTRA EDITS END **** -->
->>>>>>> d7683db... statusbar transparency
+
 
 </resources>
