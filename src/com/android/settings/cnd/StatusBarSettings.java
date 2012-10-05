@@ -69,11 +69,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.statusbar_settings);
 
-        mStatusbarTransparency = (ListPreference) findPreference(STATUS_BAR_TRANSPARENCY);
-        int statusBarTransparency = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_TRANSPARENCY, 100);
-        mStatusbarTransparency.setValue(String.valueOf(statusBarTransparency));
-        mStatusbarTransparency.setOnPreferenceChangeListener(this);
 
         mBatteryIcon = (ListPreference) findPreference(PREF_BATT_ICON);
         mBatteryIcon.setOnPreferenceChangeListener(this);
@@ -212,6 +207,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
+            }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -307,11 +303,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             result = Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_WIFI_SIGNAL_TEXT_COLOR, intHex);
-
-        } else if (preference == mStatusbarTransparency) {
-            int statusBarTransparency = Integer.valueOf((String) newValue);
-            result = Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUS_BAR_TRANSPARENCY, statusBarTransparency);
 
         }
         return result;
