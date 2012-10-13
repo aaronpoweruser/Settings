@@ -723,6 +723,10 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
                 return getResources().getDrawable(R.drawable.ic_sysbar_notifications);
             } else if (uri.equals("**widgets**")) {
                 return getResources().getDrawable(R.drawable.ic_sysbar_widget);
+<<<<<<< HEAD:src/com/android/settings/cnd/NavbarSettings.java
+=======
+            }
+>>>>>>> c5e3049... NavBar Widgets sizing fix:src/com/aokp/romcontrol/fragments/Navbar.java
         } else {
             try {
                 return getActivity().getApplicationContext().getPackageManager().getActivityIcon(Intent.parseUri(uri, 0));
