@@ -62,6 +62,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
     private static final String PREF_KILL_APP_LONGPRESS_BACK = "kill_app_longpress_back";
     private static final String PREF_ALARM_ENABLE = "alarm";
+    private static final String PREF_USE_ALT_RESOLVER = "use_alt_resolver";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     private static final int REQUEST_PICK_CUSTOM_ICON = 202;
@@ -78,6 +79,7 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
     ListPreference mVolumeKeyCursorControl;
     CheckBoxPreference mKillAppLongpressBack;
     CheckBoxPreference mAlarm;
+    CheckBoxPreference mUseAltResolver;
 
     Random randomGenerator = new Random();
 
@@ -119,6 +121,10 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
 
         mKillAppLongpressBack = (CheckBoxPreference) findPreference(PREF_KILL_APP_LONGPRESS_BACK);
                 updateKillAppLongpressBackOptions();
+
+        mUseAltResolver = (CheckBoxPreference) findPreference(PREF_USE_ALT_RESOLVER);	
+        mUseAltResolver.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                    Settings.System.ACTIVITY_RESOLVER_USE_ALT, false));
         
         mAlarm = (CheckBoxPreference) findPreference(PREF_ALARM_ENABLE);
         mAlarm.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
@@ -264,6 +270,11 @@ public class UserInterface extends SettingsPreferenceFragment implements Prefere
             .create()
             .show();
 
+        } else if (preference == mUseAltResolver) {
+            boolean checked = ((CheckBoxPreference) preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),	
+                    Settings.System.ACTIVITY_RESOLVER_USE_ALT, checked ? 1 : 0);
+            return true;
         } else if (preference == mCustomLabel) {
             AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
 

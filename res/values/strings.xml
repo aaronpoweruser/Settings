@@ -4132,6 +4132,8 @@
 
     <!-- Interface | General UI -->
     <string name="misc">Misc</string>
+    <string name="alt_resolver">Use Alt Default App Grid</string>	
+    <string name="alt_resolver_summary">Use Alternate (GB style) Default App Picker</string>
     <string name="notification_wallpaper_title">Choose notification background</string>
     <string name="notification_wallpaper_summary">You can remove the wallpaper from the menu in this window</string>
     <string name="notif_wallpaper_alpha_title">Notification background alpha</string>
