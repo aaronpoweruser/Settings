@@ -1916,44 +1916,65 @@
 
     <!-- toggle style -->
     <string-array name="toggle_style_entries">
-        <item>Icon only</item>
-        <item>Text only</item>
+        <item>@string/toggle_only_icon</item>
+        <item>@string/toggle_only_text</item>
     </string-array>
+
     <string-array name="toggle_style_values" translatable="false">
         <item>2</item>
         <item>3</item>
     </string-array>
-    <string-array name="toggles_layout_images">
-        <item>@drawable/toggle_layout_switches</item>
-        <item>@drawable/toggle_layout_buttons</item>
-    </string-array>
+
     <string-array name="toggles_layout_entries">
+        <item>@string/toggle_layout_switch</item>
+        <item>@string/toggle_layout_toggle</item>
+        <item>@string/toggle_layout_button</item>
+        <item>@string/toggle_layout_multirow</item>
+    </string-array>
+
+    <string-array name="toggles_layout_values">
         <item>0</item>
         <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
-    
-    <!-- Generic toggle overlay. Should be set per device in overlay -->
-    <string-array name="available_toggles_entries" translatable="false">
-        <item>ROTATE</item>
-        <item>BT</item>
-        <item>GPS</item>
-        <item>WIFI</item>
-        <item>AIRPLANE_MODE</item>
-        <item>VIBRATE</item>
-        <item>SILENT</item>
-        <item>TORCH</item>
-        <item>SYNC</item>
-    </string-array>
-    <string-array name="available_toggles_values">
+
+    <string-array name="available_toggles_entries">
         <item>@string/toggle_auto_rotate</item>
         <item>@string/toggle_bluetooth</item>
+        <item>@string/toggle_2g</item>
+        <item>@string/toggle_data</item>
         <item>@string/toggle_gps</item>
         <item>@string/toggle_wifi</item>
         <item>@string/toggle_airplane_mode</item>
+        <item>@string/toggle_wifi_ap</item>
+        <item>@string/toggle_usb_tether</item>
         <item>@string/toggle_vibrate</item>
+        <item>@string/toggle_lte</item>
         <item>@string/toggle_silent</item>
         <item>@string/toggle_torch</item>
         <item>@string/toggle_sync</item>
+        <item>@string/toggle_nfc</item>
+        <item>@string/toggle_donotdisturb</item>
+    </string-array>
+
+    <string-array name="available_toggles_values" translatable="false">
+        <item>ROTATE</item>
+        <item>BLUETOOTH</item>
+        <item>2G</item>
+        <item>DATA</item>
+        <item>GPS</item>
+        <item>WIFI</item>
+        <item>AIRPLANE_MODE</item>
+        <item>AP</item>
+        <item>TETHER</item>
+        <item>VIBRATE</item>
+        <item>LTE</item>
+        <item>SILENT</item>
+        <item>TORCH</item>
+        <item>SYNC</item>
+        <item>NFC</item>
+        <item>DONOTDISTURB</item>
     </string-array>
 
     <!-- Power widget brightness slider -->

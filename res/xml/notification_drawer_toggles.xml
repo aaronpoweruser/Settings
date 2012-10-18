@@ -1,71 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" 
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aokp="http://schemas.android.com/apk/res/com.android.settings">
 
-    <Preference
+    <CheckBoxPreference
         android:key="enable_toggles"
-        android:summary="@string/enabled_toggles_summary"
-        android:title="@string/enabled_toggles_title" />
+        android:title="@string/enable_toggles_title"
+        android:summary="@string/enable_toggles_summary"
+        android:defaultValue="false" />
 
     <Preference
-        android:key="toggles"
-        android:summary="@string/toggles_order_summary"
-        android:title="@string/toggles_order_title" />
+        android:key="enabled_toggles"
+        android:title="@string/enabled_toggles_title"
+        android:summary="@string/enabled_toggles_summary" />
 
-    <com.scheffsblend.smw.Preferences.ImageListPreference
-        android:entries="@array/toggles_layout_entries"
-        android:entryValues="@array/toggles_layout_entries"
-        aokp:entryImages="@array/toggles_layout_images"
-        aokp:summaryImage="@drawable/toggle_layout_summary"
+    <Preference
+        android:key="toggles_layout"
+        android:title="@string/toggles_order_title"
+        android:summary="@string/toggles_order_summary" />
+
+    <ListPreference
         android:key="toggles_layout_preference"
-        android:title="@string/toggles_layout_title" />
+        android:title="@string/toggles_layout_title"
+        android:entries="@array/toggles_layout_entries"
+        android:entryValues="@array/toggles_layout_values" />
 
     <PreferenceCategory
         android:key="advanced_cat"
         android:title="@string/advanced_settings" >
-    
+
         <ListPreference
-            android:entries="@array/toggle_style_entries"
-            android:entryValues="@array/toggle_style_values"
             android:key="toggle_style"
+            android:title="@string/toggle_style_title"
             android:summary="@string/toggle_style_summary"
-            android:title="@string/toggle_style_title" />
+            android:entries="@array/toggle_style_entries"
+            android:entryValues="@array/toggle_style_values" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="toggle_text_color"
-            android:title="@string/toggle_text_color_title"
-            android:defaultValue="#33B5E5" />
+        <CheckBoxPreference
+            android:key="disable_scrollbar"
+            android:title="@string/toggles_disable_scrolling_title"
+            android:summary="@string/toggles_disable_scrolling_summary"
+            android:defaultValue="false" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="toggle_btn_enabled_color"
-            android:title="@string/toggle_btn_enabled_color_title"
-            android:defaultValue="#33B5E5" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="toggle_btn_disabled_color"
-            android:title="@string/toggle_btn_disabled_color_title"
-            android:defaultValue="#4C4C4C" />
-
-        <com.android.settings.widgets.SeekBarPreference
-            android:key="toggle_btn_background"
-            android:title="@string/toggle_btn_background_title" />
-
-        <com.android.settings.widgets.SeekBarPreference
-            android:key="toggle_btn_alpha"
-            android:title="@string/toggle_button_alpha_title" />
-
-        <ListPreference
-            android:entries="@array/brightness_location_entries"
-            android:entryValues="@array/brightness_location_values"
-            android:key="brightness_location"
-            android:title="@string/brightness_location_title" />
-
-        <Preference
-            android:key="reset_toggles"
-            android:summary="@string/reset_toggles_summary"
-            android:title="@string/reset_toggles_title" >
-
-        </Preference>
+        <CheckBoxPreference
+            android:key="show_brightness_slider"
+            android:title="@string/show_brightness_title"
+            android:summary="@string/show_brightness_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
