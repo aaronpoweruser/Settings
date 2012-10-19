@@ -4369,14 +4369,6 @@
     <string name="button_transparency_title">Navigation button transparency</string>
     <string name="menu_nav_bar_reset">Reset navigation bar</string>
     <string name="dpi">DPI</string>
-    <string name="navbar_widgets_instructions">Swipe to view - Click to choose</string>
-    <string name="navbar_widgets_reset">Reset widgets</string>
-    <string name="navbar_widget_summary">Widget %1$s of %2$s</string>
-    <string name="navbar_widget_summary_add">Click to add Widget</string>
-    <string name="navbar_widgets_title">Configure widgets</string>
-    <string name="navbar_widgets_shiftLeft">Shift left</string>
-    <string name="navbar_widgets_shiftRight">Shift right</string>
-    <string name="navbar_widgets_delete">Delete widget</string>
 
     <!-- Interface | Navigation ring bar -->
     <string name="navbar_ring_cat">Navigation Bar Ring Targets</string>
