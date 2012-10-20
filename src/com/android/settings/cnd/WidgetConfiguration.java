@@ -33,7 +33,7 @@ import com.android.settings.R;
 
 import java.util.ArrayList;
 
-public class WidgetConfiguration extends SettingsPreferenceFragment {
+public class WidgetConfiguration extends DialogFragment {
 
     private static final String TAG = "Widget";
     public static final String ACTION_ALLOCATE_ID = "com.android.systemui.ACTION_ALLOCATE_ID";

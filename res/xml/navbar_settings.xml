@@ -26,6 +26,7 @@
         android:title="@string/navbar_qty_title"
         android:summary="@string/navbar_qty_summary" />
 
+
     <PreferenceCategory
         android:key="navbar_buttons"
         android:title="@string/navbar_button_cat">
@@ -56,6 +57,8 @@
 				<Preference 
 				    android:key="navigation_bar_widgets"
 				    android:title="@string/navbar_widgets_title" />
+
+       </PreferenceCategory>
 
     <PreferenceCategory
         android:key="advanced_cat"

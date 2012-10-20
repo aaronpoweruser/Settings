@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.appwidget.AppWidgetHost;
 import android.appwidget.AppWidgetManager;
@@ -292,8 +293,11 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
                     .startPreferenceFragment(new NavRingTargets(), true);
             return true;
         } else if (preference == mConfigureWidgets) {
-           ((PreferenceActivity) getActivity())
-                    .startPreferenceFragment(new WidgetConfiguration(), true);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();	
+            WidgetConfiguration fragment = new WidgetConfiguration();	
+            ft.addToBackStack("config_widgets");	
+            ft.replace(this.getId(), fragment);	
+            ft.commit();	
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -723,10 +727,7 @@ mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
                 return getResources().getDrawable(R.drawable.ic_sysbar_notifications);
             } else if (uri.equals("**widgets**")) {
                 return getResources().getDrawable(R.drawable.ic_sysbar_widget);
-<<<<<<< HEAD:src/com/android/settings/cnd/NavbarSettings.java
-=======
             }
->>>>>>> c5e3049... NavBar Widgets sizing fix:src/com/aokp/romcontrol/fragments/Navbar.java
         } else {
             try {
                 return getActivity().getApplicationContext().getPackageManager().getActivityIcon(Intent.parseUri(uri, 0));
