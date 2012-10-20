@@ -57,6 +57,8 @@
 				    android:key="navigation_bar_widgets"
 				    android:title="@string/navbar_widgets_title" />
 
+      </PreferenceCategory>
+
     <PreferenceCategory
         android:key="advanced_cat"
         android:title="@string/advanced_settings">
